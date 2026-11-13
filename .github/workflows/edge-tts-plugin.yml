@@ -36,6 +36,17 @@ jobs:
         run: python -m pip install -r plugins/edge-tts/requirements.txt
       - name: Test plugin and host transport
         run: python -m unittest discover -s plugins/edge-tts/tests -v
+      - name: Verify Windows environment installer
+        if: runner.os == 'Windows'
+        shell: cmd
+        run: plugins\edge-tts\setup_env.cmd
+      - name: Verify Windows CLI launcher
+        if: runner.os == 'Windows'
+        shell: cmd
+        run: plugins\edge-tts\tts.cmd --version
+      - name: Verify Linux environment installer
+        if: runner.os == 'Linux'
+        run: python plugins/edge-tts/setup_venv.py
       - name: Check generated files and build installable ZIP
         run: python plugins/edge-tts/build_plugin.py --check --output dist/edge-tts-plugin.zip
       - uses: actions/upload-artifact@v4

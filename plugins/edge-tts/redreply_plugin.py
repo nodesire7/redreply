@@ -158,7 +158,7 @@ def run_cli(root, arguments, text, config):
 	if not python.is_file():
 		raise PluginError("插件环境尚未创建，请在插件目录运行 setup_env.cmd（Linux：python3 setup_venv.py）。")
 	command = [
-		str(python), "-I", str(root / "tts_cli.py"), *arguments,
+		str(python), "-I", "-X", "utf8", str(root / "tts_cli.py"), *arguments,
 		"--timeout", str(max(1, config["timeout"] - 2)),
 		"--connect-timeout", str(min(5, config["timeout"])),
 		"--retries", str(config["retries"]), "--json",

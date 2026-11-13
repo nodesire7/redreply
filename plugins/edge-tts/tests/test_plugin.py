@@ -5,6 +5,8 @@ from __future__ import annotations
 import base64
 import json
 import os
+import re
+import runpy
 import shutil
 import subprocess
 import sys
@@ -23,6 +25,9 @@ import os
 import sys
 import time
 from pathlib import Path
+
+for handle in (sys.stdout, sys.stderr):
+	handle.reconfigure(encoding="utf-8", errors="replace")
 
 root = Path(__file__).resolve().parent
 arguments = sys.argv[1:]
@@ -48,7 +53,7 @@ if "--list-voices" in arguments:
 	print(json.dumps({"ok": True, "count": len(voices), "voices": voices}, ensure_ascii=False))
 	sys.exit(0)
 
-text = sys.stdin.read()
+text = sys.stdin.buffer.read().decode("utf-8")
 capture = {"stdin": text, "argv": arguments}
 (root / ("capture-" + str(os.getpid()) + ".json")).write_text(
 	json.dumps(capture, ensure_ascii=False), encoding="utf-8"
@@ -158,6 +163,35 @@ class PluginProtocolTests(unittest.TestCase):
 		self.assertEqual(self.captures()[0]["stdin"], text)
 		self.assertNotIn(text, self.captures()[0]["argv"])
 
+	def test_cli_fixture_uses_utf8_even_with_cp1252_standard_streams(self):
+		# 强制模拟英文 Windows 的初始标准流，防止 Linux 默认 UTF-8 掩盖夹具差异。
+		bootstrap = (
+			"import runpy, sys\n"
+			"for handle in (sys.stdin, sys.stdout, sys.stderr):\n"
+			"\thandle.reconfigure(encoding='cp1252', errors='strict')\n"
+			"script = sys.argv[1]\n"
+			"sys.argv = sys.argv[1:]\n"
+			"runpy.run_path(script, run_name='__main__')\n"
+		)
+		output = self.root / "中文输出.mp3"
+		for text in ("中文输入😀\n第二行", "__FAIL__"):
+			with self.subTest(text=text):
+				result = subprocess.run(
+					[str(self.python), "-I", "-c", bootstrap, str(self.root / "tts_cli.py"), "--stdin", "--json", "--output", str(output)],
+					input=text.encode("utf-8"), capture_output=True, timeout=10,
+				)
+				if text == "__FAIL__":
+					self.assertEqual(result.returncode, 1)
+					self.assertEqual(json.loads(result.stdout.decode("utf-8"))["error"], "模拟服务失败")
+					self.assertIn("服务的中文诊断", result.stderr.decode("utf-8"))
+				else:
+					self.assertEqual(result.returncode, 0, result.stderr.decode("utf-8", errors="replace"))
+					response = json.loads(result.stdout.decode("utf-8"))
+					self.assertTrue(response["ok"])
+					self.assertEqual(response["results"][0]["output"], str(output))
+					self.assertEqual(output.read_bytes(), b"ID3-test-transport:" + text.encode("utf-8"))
+					self.assertEqual(result.stderr, b"")
+
 	def test_parameters_are_forwarded_as_arguments(self):
 		result = self.call({
 			"action": "synthesize", "text": "参数测试", "voice": "云希",
@@ -175,8 +209,17 @@ class PluginProtocolTests(unittest.TestCase):
 	def test_actual_host_shell_boundary_uses_only_ascii_base64(self):
 		text = '你好😀\n" & echo INJECTED > injected.txt & rem " $(touch injected.txt) ' + chr(96) + 'touch injected.txt' + chr(96)
 		token = self.command({"action": "synthesize", "text": text})[-1]
-		interpreter = ".venv\\Scripts\\python.exe" if os.name == "nt" else "./.venv/bin/python"
-		command = f'"{interpreter}" -I "redreply_plugin.py" --request-base64 {token}'
+		# 使用发行包内的原始字面量，避免测试拼出的路径与实际 RedLang 命令不同。
+		scripts = json.loads((PLUGIN / "script.json").read_text(encoding="utf-8"))
+		builder = runpy.run_path(str(PLUGIN / "build_plugin.py"))
+		self.assertEqual(scripts, builder["scripts"](), "script.json 必须与生成器一致")
+		initialization = next(item["content"]["code"] for item in scripts if item["content"]["触发方式"] == "框架初始化")
+		prefixes = [literal for literal in re.findall(r"【@([^】]*)】", initialization) if "--request-base64 " in literal]
+		self.assertEqual(len(prefixes), 2, "应当各有一个 Windows 和 POSIX 原始命令前缀")
+		prefix = next(value for value in prefixes if ("Scripts" in value) == (os.name == "nt"))
+		suffix = re.search(re.escape("【BASE64编码@【变量@edge_tts_payload】】") + r"【@([^】]*)】", initialization)
+		self.assertIsNotNone(suffix, "Base64 参数之后必须保留实际脚本的原始后缀")
+		command = prefix + token + suffix.group(1)
 		self.assertTrue(command.isascii())
 		if os.name == "nt":
 			batch = self.root / "host-command.cmd"
