@@ -1,0 +1,232 @@
+{
+  "schema": 1,
+  "source_page": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/index.html",
+  "source_repo_commit": "4df8583e37268fadd80759bd3c0c0f19e8977e3a",
+  "retrieved_at": "2026-11-13T15:18:21.641365+00:00",
+  "voices": [
+    {
+      "name": "晓晓",
+      "id": "zh-CN-XiaoxiaoNeural",
+      "category": "female",
+      "gender": "女",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/XiaoxiaoNeural.mp3",
+      "edge_listed_at_check": true
+    },
+    {
+      "name": "晓依",
+      "id": "zh-CN-XiaoyiNeural",
+      "category": "female",
+      "gender": "女",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/XiaoyiNeural.mp3",
+      "edge_listed_at_check": true
+    },
+    {
+      "name": "晓涵",
+      "id": "zh-CN-XiaohanNeural",
+      "category": "female",
+      "gender": "女",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/XiaohanNeural.mp3",
+      "edge_listed_at_check": false
+    },
+    {
+      "name": "晓墨",
+      "id": "zh-CN-XiaomoNeural",
+      "category": "female",
+      "gender": "女",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/XiaomoNeural.mp3",
+      "edge_listed_at_check": false
+    },
+    {
+      "name": "晓睿",
+      "id": "zh-CN-XiaoruiNeural",
+      "category": "female",
+      "gender": "女",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/XiaoruiNeural.mp3",
+      "edge_listed_at_check": false
+    },
+    {
+      "name": "晓双",
+      "id": "zh-CN-XiaoshuangNeural",
+      "category": "female",
+      "gender": "女",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/XiaoshuangNeural.mp3",
+      "edge_listed_at_check": false
+    },
+    {
+      "name": "晓梦",
+      "id": "zh-CN-XiaomengNeural",
+      "category": "female",
+      "gender": "女",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/XiaomengNeural.mp3",
+      "edge_listed_at_check": false
+    },
+    {
+      "name": "云希",
+      "id": "zh-CN-YunxiNeural",
+      "category": "male",
+      "gender": "男",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/YunxiNeural.mp3",
+      "edge_listed_at_check": true
+    },
+    {
+      "name": "云扬",
+      "id": "zh-CN-YunyangNeural",
+      "category": "male",
+      "gender": "男",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/YunyangNeural.mp3",
+      "edge_listed_at_check": true
+    },
+    {
+      "name": "云健",
+      "id": "zh-CN-YunjianNeural",
+      "category": "male",
+      "gender": "男",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/YunjianNeural.mp3",
+      "edge_listed_at_check": true
+    },
+    {
+      "name": "云夏",
+      "id": "zh-CN-YunxiaNeural",
+      "category": "male",
+      "gender": "男",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/YunxiaNeural.mp3",
+      "edge_listed_at_check": true
+    },
+    {
+      "name": "云泽",
+      "id": "zh-CN-YunzeNeural",
+      "category": "male",
+      "gender": "男",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/YunzeNeural.mp3",
+      "edge_listed_at_check": false
+    },
+    {
+      "name": "云枫",
+      "id": "zh-CN-YunfengNeural",
+      "category": "male",
+      "gender": "男",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/YunfengNeural.mp3",
+      "edge_listed_at_check": false
+    },
+    {
+      "name": "云彪（东北）",
+      "id": "zh-CN-liaoning-YunbiaoNeural",
+      "category": "dialect",
+      "gender": "男",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/liaoning-Yunbiao.mp3",
+      "edge_listed_at_check": false
+    },
+    {
+      "name": "晓北（东北）",
+      "id": "zh-CN-liaoning-XiaobeiNeural",
+      "category": "dialect",
+      "gender": "女",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/liaoning-Xiaobei.mp3",
+      "edge_listed_at_check": true
+    },
+    {
+      "name": "云登（河南）",
+      "id": "zh-CN-henan-YundengNeural",
+      "category": "dialect",
+      "gender": "男",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/henan-Yundeng.mp3",
+      "edge_listed_at_check": false
+    },
+    {
+      "name": "云翔（山东）",
+      "id": "zh-CN-shandong-YunxiangNeural",
+      "category": "dialect",
+      "gender": "男",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/shandong-Yunxiang.mp3",
+      "edge_listed_at_check": false
+    },
+    {
+      "name": "云熙（四川）",
+      "id": "zh-CN-sichuan-YunxiNeural",
+      "category": "dialect",
+      "gender": "男",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/sichuan-Yunxi.mp3",
+      "edge_listed_at_check": false
+    },
+    {
+      "name": "云奇（广西）",
+      "id": "zh-CN-guangxi-YunqiNeural",
+      "category": "dialect",
+      "gender": "男",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/guangxi-Yunqi.mp3",
+      "edge_listed_at_check": false
+    },
+    {
+      "name": "晓妮（陕西）",
+      "id": "zh-CN-shaanxi-XiaoniNeural",
+      "category": "dialect",
+      "gender": "女",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/shaanxi-Xiaoni.mp3",
+      "edge_listed_at_check": true
+    },
+    {
+      "name": "云哲（吴语）",
+      "id": "wuu-CN-YunzheNeural",
+      "category": "dialect",
+      "gender": "男",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/wuu-Yunzhe.mp3",
+      "edge_listed_at_check": false
+    },
+    {
+      "name": "晓彤（吴语）",
+      "id": "wuu-CN-XiaotongNeural",
+      "category": "dialect",
+      "gender": "女",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/wuu-Xiaotong.mp3",
+      "edge_listed_at_check": false
+    },
+    {
+      "name": "晓佳",
+      "id": "zh-HK-HiuGaaiNeural",
+      "category": "hk",
+      "gender": "女",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/HK-HiuGaai.mp3",
+      "edge_listed_at_check": true
+    },
+    {
+      "name": "晓蔓",
+      "id": "zh-HK-HiuMaanNeural",
+      "category": "hk",
+      "gender": "女",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/HK-HiuMaan.mp3",
+      "edge_listed_at_check": true
+    },
+    {
+      "name": "云龙",
+      "id": "zh-HK-WanLungNeural",
+      "category": "hk",
+      "gender": "男",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/HK-WanLung.mp3",
+      "edge_listed_at_check": true
+    },
+    {
+      "name": "晓晨",
+      "id": "zh-TW-HsiaoChenNeural",
+      "category": "tw",
+      "gender": "女",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/TW-HsiaoChen.mp3",
+      "edge_listed_at_check": true
+    },
+    {
+      "name": "晓雨",
+      "id": "zh-TW-HsiaoYuNeural",
+      "category": "tw",
+      "gender": "女",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/TW-HsiaoYu.mp3",
+      "edge_listed_at_check": true
+    },
+    {
+      "name": "云哲",
+      "id": "zh-TW-YunJheNeural",
+      "category": "tw",
+      "gender": "男",
+      "sample_url": "https://jangviktor-web.github.io/novel2voice/scripts/voice_samples/TW-YunJhe.mp3",
+      "edge_listed_at_check": true
+    }
+  ]
+}

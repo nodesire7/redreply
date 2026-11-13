@@ -79,6 +79,10 @@
 
 红色问答维护一个插件商店，您可以在这里[发布您的插件](https://github.com/super1207/redreplyhub)，让更多的人享受到您的劳动成果。
 
+### 本分支的 TTS 附加包
+
+本分支新增 [Edge TTS 多人声附加包](plugins/edge-tts/README.md)，按 v1.0.80 的包规范提供独立虚拟环境、实时人声查询、参考声音试听及语速、音调、音量设置。安装方法见附加包文档；这是本分支提供的扩展，原始项目为 [super1207/redreply](https://github.com/super1207/redreply)。
+
 
 ## 开源说明
 

@@ -1,0 +1,47 @@
+name: Edge TTS plugin
+
+on:
+  push:
+    paths:
+      - 'plugins/edge-tts/**'
+      - '.github/workflows/edge-tts-plugin.yml'
+  pull_request:
+    paths:
+      - 'plugins/edge-tts/**'
+      - '.github/workflows/edge-tts-plugin.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: ${{ matrix.os }} / Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            python: '3.10'
+          - os: windows-latest
+            python: '3.12'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install TTS dependency
+        run: python -m pip install -r plugins/edge-tts/requirements.txt
+      - name: Test plugin and host transport
+        run: python -m unittest discover -s plugins/edge-tts/tests -v
+      - name: Check generated files and build installable ZIP
+        run: python plugins/edge-tts/build_plugin.py --check --output dist/edge-tts-plugin.zip
+      - uses: actions/upload-artifact@v4
+        if: matrix.os == 'ubuntu-latest'
+        with:
+          name: edge-tts-plugin
+          path: dist/edge-tts-plugin.zip
+          if-no-files-found: error
+          retention-days: 14

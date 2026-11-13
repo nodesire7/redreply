@@ -1,0 +1,7 @@
+{
+	"name": "Edge TTS 多人声",
+	"description": "支持实时全量人声查询、中文别名、语速/音调/音量设置及独立虚拟环境的文字转语音附加包。安装后先在本机创建环境。",
+	"author": "nodesire7",
+	"version": "1.0.0",
+	"need_python": true
+}

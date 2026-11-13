@@ -1,0 +1,122 @@
+[
+	{
+		"name": "Edge TTS 初始化",
+		"description": "Edge TTS 初始化",
+		"content": {
+			"关键词": "",
+			"匹配方式": "完全匹配",
+			"触发方式": "框架初始化",
+			"code": "【定义命令@EdgeTTS请求@【定义变量@edge_tts_payload@【转字节集@【转文本@【参数@1】】】】【判真@【计算@【取长度@【变量@edge_tts_payload】】>5000】@【定义变量@edge_tts_command@【判等@【目录分隔符】@/@【@\".venv/Scripts/python.exe\" -I \"redreply_plugin.py\" --request-base64 \"】@【@\".venv/bin/python\" -I \"redreply_plugin.py\" --request-base64 \"】】】【定义变量@edge_tts_result@【JSON解析@【命令行@【变量@edge_tts_command】【BASE64编码@【变量@edge_tts_payload】】【@\"】】】】【判等@【取类型@【变量@edge_tts_result】】@O@【对象@ok@假@error@【@插件启动失败或输出格式错误，请在本机插件目录运行 setup_env.cmd；Linux 使用 python3 setup_venv.py。详细错误见运行日志。】】@【变量@edge_tts_result】】@【对象@ok@假@error@【@请求超过 5000 字节，请缩短文案和参数。】】】】【定义命令@EdgeTTS展示@【定义变量@edge_tts_result@【参数@1】】【判真@【取元素@【变量@edge_tts_result】@ok】@【CQ转义@语音生成失败：【取元素@【变量@edge_tts_result】@error】】@【判等@【取元素@【变量@edge_tts_result】@kind】@audio@【判等@【取元素@【变量@edge_tts_result】@kind】@sample@【CQ转义@【取元素@【变量@edge_tts_result】@text】】@【语音@【取元素@【变量@edge_tts_result】@sample_url】】】@【语音@【BASE64解码@【取元素@【变量@edge_tts_result】@audio_base64】】】】】】【定义命令@EdgeTTS@【EdgeTTS请求@【对象@action@synthesize@text@【参数@1】@voice@【参数@2】@rate@【参数@3】@pitch@【参数@4】@volume@【参数@5】】】】【定义命令@EdgeTTS语音@【EdgeTTS展示@【EdgeTTS@【参数@1】@【参数@2】@【参数@3】@【参数@4】@【参数@5】】】】"
+		}
+	},
+	{
+		"name": "Edge TTS 语音",
+		"description": "Edge TTS 语音",
+		"content": {
+			"关键词": "语音 ",
+			"匹配方式": "前缀匹配",
+			"触发方式": "群、私聊触发",
+			"code": "【EdgeTTS展示@【EdgeTTS请求@【对象@action@chat@text@【CQ反转义@【子关键词】】】】】"
+		}
+	},
+	{
+		"name": "Edge TTS 朗读",
+		"description": "Edge TTS 朗读",
+		"content": {
+			"关键词": "朗读 ",
+			"匹配方式": "前缀匹配",
+			"触发方式": "群、私聊触发",
+			"code": "【EdgeTTS展示@【EdgeTTS请求@【对象@action@chat@text@【CQ反转义@【子关键词】】】】】"
+		}
+	},
+	{
+		"name": "Edge TTS 人声",
+		"description": "Edge TTS 人声",
+		"content": {
+			"关键词": "语音人声",
+			"匹配方式": "前缀匹配",
+			"触发方式": "群、私聊触发",
+			"code": "【EdgeTTS展示@【EdgeTTS请求@【对象@action@voices@text@【CQ反转义@【子关键词】】】】】"
+		}
+	},
+	{
+		"name": "Edge TTS 状态",
+		"description": "Edge TTS 状态",
+		"content": {
+			"关键词": "语音状态",
+			"匹配方式": "完全匹配",
+			"触发方式": "群、私聊触发",
+			"code": "【EdgeTTS展示@【EdgeTTS请求@【对象@action@status】】】"
+		}
+	},
+	{
+		"name": "Edge TTS 样本目录",
+		"description": "Edge TTS 样本目录",
+		"content": {
+			"关键词": "语音样本",
+			"匹配方式": "完全匹配",
+			"触发方式": "群、私聊触发",
+			"code": "【EdgeTTS展示@【EdgeTTS请求@【对象@action@samples】】】"
+		}
+	},
+	{
+		"name": "Edge TTS 参考示例",
+		"description": "Edge TTS 参考示例",
+		"content": {
+			"关键词": "语音示例 ",
+			"匹配方式": "前缀匹配",
+			"触发方式": "群、私聊触发",
+			"code": "【EdgeTTS展示@【EdgeTTS请求@【对象@action@sample@text@【CQ反转义@【子关键词】】】】】"
+		}
+	},
+	{
+		"name": "Edge TTS 实时试听",
+		"description": "Edge TTS 实时试听",
+		"content": {
+			"关键词": "语音试听 ",
+			"匹配方式": "前缀匹配",
+			"触发方式": "群、私聊触发",
+			"code": "【EdgeTTS展示@【EdgeTTS请求@【对象@action@preview@text@【CQ反转义@【子关键词】】】】】"
+		}
+	},
+	{
+		"name": "Edge TTS 帮助",
+		"description": "Edge TTS 帮助",
+		"content": {
+			"关键词": "语音帮助",
+			"匹配方式": "完全匹配",
+			"触发方式": "群、私聊触发",
+			"code": "【@语音 你好\n语音 云希|你好\n语音 云希|+20%|-5Hz|0%|你好\n语音人声 all 1：全部实时人声\n语音人声 zh 1：中文人声\n语音样本：参考页全部 28 种声音\n语音示例 晓涵：播放参考页现成样本\n语音试听 晓晓：实时生成一段试听\n语音状态：检查本机环境】"
+		}
+	},
+	{
+		"name": "Edge TTS 空输入帮助",
+		"description": "Edge TTS 空输入帮助",
+		"content": {
+			"关键词": "语音",
+			"匹配方式": "完全匹配",
+			"触发方式": "群、私聊触发",
+			"code": "【@语音 你好\n语音 云希|你好\n语音 云希|+20%|-5Hz|0%|你好\n语音人声 all 1：全部实时人声\n语音人声 zh 1：中文人声\n语音样本：参考页全部 28 种声音\n语音示例 晓涵：播放参考页现成样本\n语音试听 晓晓：实时生成一段试听\n语音状态：检查本机环境】"
+		}
+	},
+	{
+		"name": "Edge TTS 朗读帮助",
+		"description": "Edge TTS 朗读帮助",
+		"content": {
+			"关键词": "朗读",
+			"匹配方式": "完全匹配",
+			"触发方式": "群、私聊触发",
+			"code": "【@语音 你好\n语音 云希|你好\n语音 云希|+20%|-5Hz|0%|你好\n语音人声 all 1：全部实时人声\n语音人声 zh 1：中文人声\n语音样本：参考页全部 28 种声音\n语音示例 晓涵：播放参考页现成样本\n语音试听 晓晓：实时生成一段试听\n语音状态：检查本机环境】"
+		}
+	},
+	{
+		"name": "Edge TTS 脚本错误",
+		"description": "Edge TTS 脚本错误",
+		"content": {
+			"关键词": "",
+			"匹配方式": "完全匹配",
+			"触发方式": "脚本错误",
+			"code": "【@语音插件执行失败，请查看红色问答运行日志，并在本机插件目录重新运行 setup_env.cmd 检查环境。】"
+		}
+	}
+]

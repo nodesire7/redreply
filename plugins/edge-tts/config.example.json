@@ -1,0 +1,10 @@
+{
+	"voice": "晓晓",
+	"rate": 0,
+	"pitch": 0,
+	"volume": 0,
+	"timeout": 12,
+	"retries": 1,
+	"max_chars": 1000,
+	"max_concurrent": 2
+}

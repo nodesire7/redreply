@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+runtime/
+.edge-tts-*/
+.tts-*/
+config.json
+output/
+output.mp3
+output.srt
+dist/
